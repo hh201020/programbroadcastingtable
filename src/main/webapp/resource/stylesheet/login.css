@@ -1,0 +1,32 @@
+#bodyTable .sidebarCell {
+	align: center;
+    display: none;
+}
+
+#bodyTable .contentCell {
+	align: center;
+    padding: 100;
+}
+
+#bodyTable {
+	align: center;
+	border: 0;
+	padding: 0;
+	margin: 2px 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	height: 95%;
+}
+table.maintable00 {
+	text-align: center;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 20px;
+	color: #ffffff;
+	width: 160px;
+	height: 50px;
+	background-color: #222222;
+	border: 2px #6699CC solid;
+	border-collapse: collapse;
+	border-spacing: 1px;
+}
