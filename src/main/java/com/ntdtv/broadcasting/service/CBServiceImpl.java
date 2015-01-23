@@ -57,7 +57,7 @@ public class CBServiceImpl implements CBService {
 	
 	public List<BroadcastingProgramDisplayingInfo> getListDayAllChannels01() {
 		GregorianCalendar currentTime = new GregorianCalendar();
-		System.out.println("Service : currentTime: " + currentTime.getTime() +  currentTime.getTimeInMillis());
+//		System.out.println("Service : currentTime: " + currentTime.getTime() +  currentTime.getTimeInMillis());
 
 		return listDayAllChannels01;
 	}

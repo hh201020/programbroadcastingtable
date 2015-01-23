@@ -38,7 +38,7 @@ Code: https://github.com/springinpractice
 		p:viewClass="org.springframework.web.servlet.view.JstlView"
 		p:prefix="/WEB-INF/jsp/view/"
 		p:suffix=".jsp" />
-	
+	<mvc:resources mapping="/resource/**" location="/resource/" />
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
 		p:basename="classpath:/spring/messages" />

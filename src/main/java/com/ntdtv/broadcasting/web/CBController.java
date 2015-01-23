@@ -36,6 +36,9 @@ public class CBController {
 	@Inject
 	CBService cBService;
 
+	boolean contentChanged = false;
+	int lastIndex = 0;
+	
 	int currentIndex01 = 0;
 	int currentIndex02 = 0;
 	int currentIndex03 = 0;
@@ -51,15 +54,18 @@ public class CBController {
 		log.debug("Listing tickets.");
 //		System.out.println("CB display");
 		GregorianCalendar currentTime = new GregorianCalendar();
-		System.out.println("currentTime: " + currentTime.getTime() +  currentTime.getTimeInMillis());
+//		System.out.println("currentTime: " + currentTime.getTime() +  currentTime.getTimeInMillis());
 
 		model_Today_All_01 = cBService.getListDayAllChannels01();
 		model_Today_All_02 = cBService.getListDayAllChannels02();
 		model_Today_All_03 = cBService.getListDayAllChannels03();
 		model_Today_All_04 = cBService.getListDayAllChannels04();
-		System.out.println("model_Today_All_01 : " + model_Today_All_01);
+//		System.out.println("model_Today_All_01 : " + model_Today_All_01);
 
 		currentIndex01 = currentProgram_Index(model_Today_All_01);
+		contentChanged = ifContentChanged();
+		model.put("ifContentChanged", contentChanged);
+//		System.out.println("contentChanged :" + contentChanged);
 		putModel_Value(model, "tickets01", currentIndex01, model_Today_All_01);
 
 		currentIndex02 = currentProgram_Index(model_Today_All_02);
@@ -71,8 +77,19 @@ public class CBController {
 		currentIndex04 = currentProgram_Index(model_Today_All_04);
 		putModel_Value(model, "tickets04", currentIndex04, model_Today_All_04);
 
-		System.out.println(model.get("tickets01"));
+//		System.out.println(model.get("tickets01"));
 		return "broadcast/CurrentBroadcasting";
+	}
+
+	private boolean ifContentChanged() {
+		boolean ifChanged = false;
+		if(currentIndex01 != lastIndex){
+			ifChanged = true;
+		} else{
+			ifChanged = false;
+		}
+		lastIndex = currentIndex01;
+		return ifChanged;
 	}
 
 	private int currentProgram_Index(List<BroadcastingProgramDisplayingInfo> model_Today_All) {

@@ -14,11 +14,12 @@
 		value="${fn:trim(htmlTitle)}" /></title>
 <link rel="stylesheet"
 	href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<c:url value="/resource/stylesheet/main.css" />" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+<script	src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+
+<link rel="stylesheet"	href="<c:url value="/resource/stylesheet/main.css" />" />
+<script src="<c:url value="/resource/js/main.js" />"></script>
+
 <script type="text/javascript" lang="javascript">
 	var postInvisibleForm = function(url, fields) {
 		var form = $('<form id="mapForm" method="post"></form>').attr({
