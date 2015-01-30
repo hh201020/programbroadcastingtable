@@ -32,6 +32,8 @@ import java.util.Map;
 @RequestMapping(value = "/broadcast")
 public class CBController {
 	private static final Logger log = LogManager.getLogger();
+	private static final int SECONDSAHEADOFCHANGE = 25000;
+	private static final int STOPMUSICBEFORECHANGE = 15000;
 
 	@Inject
 	CBService cBService;
@@ -53,8 +55,6 @@ public class CBController {
 		// GregorianCalendar currentTime = new GregorianCalendar();
 		log.debug("Listing tickets.");
 //		System.out.println("CB display");
-		GregorianCalendar currentTime = new GregorianCalendar();
-//		System.out.println("currentTime: " + currentTime.getTime() +  currentTime.getTimeInMillis());
 
 		model_Today_All_01 = cBService.getListDayAllChannels01();
 		model_Today_All_02 = cBService.getListDayAllChannels02();
@@ -63,7 +63,7 @@ public class CBController {
 //		System.out.println("model_Today_All_01 : " + model_Today_All_01);
 
 		currentIndex01 = currentProgram_Index(model_Today_All_01);
-		contentChanged = ifContentChanged();
+		contentChanged = ifContentChanged(SECONDSAHEADOFCHANGE, STOPMUSICBEFORECHANGE);
 		model.put("ifContentChanged", contentChanged);
 //		System.out.println("contentChanged :" + contentChanged);
 		putModel_Value(model, "tickets01", currentIndex01, model_Today_All_01);
@@ -92,6 +92,23 @@ public class CBController {
 		return ifChanged;
 	}
 
+	private boolean ifContentChanged(int secondsAheadOfChange, int stopMusicBeforeChange) {
+		boolean ifChanged = false;
+		GregorianCalendar currentTime = new GregorianCalendar();
+		long timeToNextProgram = model_Today_All_01.get(currentIndex01).getStartAtGMT() - currentTime.getTimeInMillis();
+//		System.out.println("currentTime: " + currentTime.getTime() + " " + currentTime.getTimeInMillis());
+//		System.out.println("Nextprogram: " + model_Today_All_01.get(currentIndex01).getStartGMTDateTime() + " " + model_Today_All_01.get(currentIndex01).getStartAtGMT());
+
+		if(timeToNextProgram < secondsAheadOfChange && timeToNextProgram > stopMusicBeforeChange){
+//		if(currentIndex01 != lastIndex){
+			ifChanged = true;
+		} else{
+			ifChanged = false;
+		}
+		lastIndex = currentIndex01;
+		return ifChanged;
+	}
+	
 	private int currentProgram_Index(List<BroadcastingProgramDisplayingInfo> model_Today_All) {
 		int Index = 0;
 		GregorianCalendar currentTime = new GregorianCalendar();

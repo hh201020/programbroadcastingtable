@@ -12,7 +12,7 @@
  */
 function jBeep(soundFile){
 	
-	if (!soundFile) soundFile = "resource/sounds/beep.wav";
+	if (!soundFile) soundFile = "resource/sounds/harp.mp3";
 	
 	var soundElem, bodyElem, isHTML5;
 	
@@ -84,17 +84,6 @@ var elementsProgram00;
 var currentDate00;
 var dtToday; 
 var elements;
-var elementsProgram01;
-var currentDate01;
-var elements02;
-var elementsProgram02;
-var currentDate02;
-var elements03;
-var elementsProgram03;
-var currentDate03;
-var elements04;
-var elementsProgram04;
-var currentDate04;
 var datetimes00;
 
 var programRefreshTime;
