@@ -2,7 +2,7 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
     version="1.0">
     <persistence-unit name="userPersistenceUnit" transaction-type="RESOURCE_LOCAL" >
-    <class>com.springinpractice.ch02.model.BroadcastingProgramDisplayingInfo</class>
-    <class>com.springinpractice.ch02.model.TbProgramItemData</class>
+    <class>com.ntdtv.broadcasting.model.BroadcastingProgramDisplayingInfo</class>
+    <class>com.ntdtv.broadcasting.model.TbProgramItemData</class>
 </persistence-unit>
 </persistence>  
