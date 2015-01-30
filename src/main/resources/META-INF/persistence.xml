@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
     version="1.0">
-    <!-- Just a test -->
+    <!-- Just a testttttttttttttttttttttt -->
         <!-- Just a test -->
     <persistence-unit name="userPersistenceUnit" transaction-type="RESOURCE_LOCAL" >
     <class>com.ntdtv.broadcasting.model.TbProgramItemData</class>
